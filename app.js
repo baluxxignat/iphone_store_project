@@ -1,12 +1,26 @@
 const express = require('express');
-const { variables: { PORT } } = require('./config');
-
+const mongoose = require('mongoose');
 require('dotenv').config();
+
+const { variables: { PORT, DATA_BASE_URL } } = require('./config');
+const { authRouter } = require('./routes');
 
 const app = express();
 
-app.get('/ping', (req, res) => res.json('Pong'));
+// MongoDB CONNECTION
+async function start() {
+    try {
+        await mongoose.connect(DATA_BASE_URL);
+        app.listen(PORT, () => {
+            console.log(`Server started on port ${PORT}`);
+        });
+    } catch (e) {
+        console.log('Server Error', e.message);
+        process.exit(1);
+    }
+}
+start();
 
-app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}`);
-});
+// Routes
+app.get('/ping', (req, res) => res.json('Pong'));
+app.use('/auth', authRouter);

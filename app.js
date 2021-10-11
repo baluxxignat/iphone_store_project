@@ -10,6 +10,8 @@ const {
 const { authRouter } = require('./routes');
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // ====== MongoDB CONNECTION
 async function start() {

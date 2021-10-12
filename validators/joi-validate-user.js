@@ -11,8 +11,8 @@ const registrNewUserValidator = Joi.object({
 });
 
 const loginUserValidator = Joi.object({
-    email: Joi.string().regex(EMAIL_REGEX).trim(),
-    password: Joi.string().regex(PASSWORD_REGEX).trim()
+    email: emailShema,
+    password: passwordShema
 });
 
 module.exports = {

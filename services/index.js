@@ -1,5 +1,5 @@
 module.exports = {
-    hashPassword: require('./hash-password'),
+    bcryptService: require('./bcrypt-service'),
     userService: require('./userService'),
     tokenService: require('./tokenService')
 };

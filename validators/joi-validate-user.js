@@ -10,6 +10,12 @@ const registrNewUserValidator = Joi.object({
     role: Joi.string().allow(...Object.values(userRolesEnum))
 });
 
+const loginUserValidator = Joi.object({
+    email: emailShema,
+    password: passwordShema
+});
+
 module.exports = {
-    registrNewUserValidator
+    registrNewUserValidator,
+    loginUserValidator
 };

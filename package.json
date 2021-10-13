@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "s": "nodemon app.js"
+    "s": "nodemon app.js",
+    "react-client": "npm run start --prefix react-client",
+    "dev": "concurrently \"npm run s\" \" npm run react-client\""
   },
   "keywords": [],
   "author": "Oleksandr Ignatov <aleksandr.pravo@gmail.com>",
@@ -16,6 +18,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.9"
   },
   "devDependencies": {
@@ -24,6 +27,7 @@
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
-    "nodemon": "^2.0.13"
+    "nodemon": "^2.0.13",
+    "concurrently": "^6.3.0"
   }
 }
